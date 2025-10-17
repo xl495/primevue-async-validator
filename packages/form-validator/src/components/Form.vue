@@ -63,8 +63,16 @@ const unregisterField = (field: FormItemContext) => {
  */
 const validateField = async (prop: string, trigger?: TriggerType) => {
   // 根据配置判断是否需要验证
-  if (trigger === 'blur' && !props.validateOnBlur) return
-  if (trigger === 'change' && !props.validateOnChange) return
+  const triggers = Array.isArray(trigger) ? trigger : (trigger ? [trigger] : [])
+
+  // 如果指定了触发器，检查是否应该验证
+  if (triggers.length > 0) {
+    const shouldValidateBlur = triggers.includes('blur') && props.validateOnBlur
+    const shouldValidateChange = triggers.includes('change') && props.validateOnChange
+
+    // 如果没有任何触发器应该被验证，则返回
+    if (!shouldValidateBlur && !shouldValidateChange) return
+  }
 
   if (!props.rules || !props.rules[prop]) {
     return

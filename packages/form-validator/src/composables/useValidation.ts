@@ -18,7 +18,7 @@ export function useValidation() {
    * 获取字段对应的验证规则
    * @param rules 所有规则
    * @param prop 字段名
-   * @param trigger 触发类型
+   * @param trigger 触发类型（可以是单个值或数组）
    */
   const getFieldRules = (
     rules: Rules,
@@ -32,12 +32,17 @@ export function useValidation() {
 
     // 如果指定了触发类型，则过滤出对应的规则
     if (trigger) {
+      // 将 trigger 转换为数组形式以便统一处理
+      const triggerArray = Array.isArray(trigger) ? trigger : [trigger]
+
       return rulesArray.filter(rule => {
         if (!rule.trigger) return true // 没有指定 trigger 的规则总是生效
-        if (Array.isArray(rule.trigger)) {
-          return rule.trigger.includes(trigger)
-        }
-        return rule.trigger === trigger
+
+        // 将 rule.trigger 也转换为数组形式
+        const ruleTriggers = Array.isArray(rule.trigger) ? rule.trigger : [rule.trigger]
+
+        // 检查是否有交集
+        return triggerArray.some(t => ruleTriggers.includes(t))
       })
     }
 

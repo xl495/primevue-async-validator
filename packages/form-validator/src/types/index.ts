@@ -2,7 +2,7 @@ import type { Ref, InjectionKey } from 'vue'
 import type { Rules, RuleItem, Values } from 'async-validator'
 
 // 触发类型
-export type TriggerType = 'blur' | 'change'
+export type TriggerType = 'blur' | 'change' | ['blur', 'change'] | ['change', 'blur']
 
 // 表单验证规则类型
 export type FormRules = Rules
