@@ -1,0 +1,41 @@
+{
+  "name": "primevue-form-validator-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A monorepo for PrimeVue form validation library",
+  "scripts": {
+    "dev": "pnpm --filter example dev",
+    "dev:docs": "pnpm --filter docs dev",
+    "build": "pnpm -r build",
+    "build:lib": "pnpm --filter @primevue-form/validator build",
+    "test": "pnpm -r test",
+    "lint": "pnpm -r lint",
+    "clean": "pnpm -r clean && rm -rf node_modules"
+  },
+  "keywords": [
+    "vue",
+    "vue3",
+    "primevue",
+    "form",
+    "validation",
+    "async-validator",
+    "monorepo"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^24.6.0",
+    "@vitejs/plugin-vue": "^6.0.1",
+    "@vue/tsconfig": "^0.8.1",
+    "primeicons": "^7.0.0",
+    "primevue": "^3.53.1",
+    "typescript": "~5.9.3",
+    "vite": "^7.1.7",
+    "vue": "^3.5.22",
+    "vue-tsc": "^3.1.0"
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "pnpm": ">=8.0.0"
+  }
+}

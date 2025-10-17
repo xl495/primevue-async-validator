@@ -1,0 +1,8 @@
+{
+  "files": [],
+  "references": [
+    { "path": "./packages/form-validator/tsconfig.json" },
+    { "path": "./packages/example/tsconfig.json" },
+    { "path": "./tsconfig.node.json" }
+  ]
+}
